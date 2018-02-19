@@ -1,0 +1,6 @@
+name = KnowPulse Fields
+description = A collection of fields used by KnowPulse
+core = 7.x
+package = Tripal Extensions
+dependencies[] = tripal
+dependencies[] = tripal_chado
