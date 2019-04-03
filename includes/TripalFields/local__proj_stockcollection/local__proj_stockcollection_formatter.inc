@@ -37,6 +37,15 @@ class local__proj_stockcollection_formatter extends ChadoFieldFormatter {
 
     // Get the settings
     $settings = $display['settings'];
+
+    // @debug dpm($items, 'items');
+    foreach ($items as $delta => $item) {
+      $element[$delta] = array(
+        '#theme' => 'table',
+        '#header' => array('schema:name' => 'Name', 'data:2091' => 'Identifier'),
+        '#rows' => $item['value']['CO_010:0000251'],
+      );
+    }
   }
 
     /**

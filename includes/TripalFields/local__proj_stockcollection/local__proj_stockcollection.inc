@@ -105,6 +105,7 @@ class local__proj_stockcollection extends ChadoField {
     **/
 
   public function load($entity) {
+    $field_name = $this->instance['field_name'];
 
     // ChadoFields automatically load the chado column specified in the
     // default settings above. If that is all you need then you don't even
@@ -112,6 +113,26 @@ class local__proj_stockcollection extends ChadoField {
     // additional data to be used in the display, you should add it here.
     parent::load($entity);
 
+    $project_id = $entity->{$field_name}['und'][0]['chado-project__project_id'];
+
+    $stockcollection_ids = chado_query('SELECT stockcollection_id FROM {project_stockcollection} WHERE project_id=:id',
+      array(':id' => $project_id))->fetchCol();
+    // @debug dpm($stockcollection_ids, 'collection ids');
+
+    foreach ($stockcollection_ids as $k => $stockcollection_id) {
+
+      $entity->{$field_name}['und'][$k]['value'] = array();
+
+      // Retrieve all stocks.
+      $resource = chado_query('SELECT s.name, s.uniquename FROM {stock} s WHERE stock_id IN (SELECT stock_id FROM {stockcollection_stock} WHERE stockcollection_id=:id)',
+        array(':id' => $stockcollection_id));
+      foreach($resource as $r) {
+        $entity->{$field_name}['und'][$k]['value']['CO_010:0000251'][] = array(
+          'schema:name' => $r->name,
+          'data:2091' => $r->uniquename,
+        );
+      }
+    }
     // @debug dpm($entity, 'entity');
   }
 
