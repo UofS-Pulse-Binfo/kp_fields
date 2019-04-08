@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function kp_fields_install() {
+  // Insert cvterm require by germplasm crossing block summary field.
+  $term = array(
+    'id'   =>  'local:germplasm_crossing_block_summary',
+    'name'   =>  'germplasm crossing block summary',
+    'cv_name'  =>  'local',
+    'definition' =>  'Germplasm Crossing Block Summary'
+  );
+
+  chado_insert_cvterm($term);
+}

@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Style Germplasm Crossing Block Summary
+ */
+
+/**
+ * Field wrapper
+ */
+#field-germplasm-crossing-block-summary-wrapper {
+  background: #F9F9F9;
+  border: 1px solid #ECECEC;
+  padding: 20px;
+}
+
+
+#field-germplasm-crossing-block-summary-wrapper ul {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#field-germplasm-crossing-block-summary-wrapper ul li {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 300;
+  margin: 0 2%;
+}
+
+#field-germplasm-crossing-block-summary-wrapper ul li:last-child {
+  width: 70%;
+  display: inline-block;
+  font-size: 2.5em;
+  text-align: center;
+  border-left: 1px solid #CCCCCC;
+}
+
+#field-germplasm-crossing-block-summary-wrapper ul li span {
+  display: block;
+  font-family: geneva, serif;
+  font-size: 1.5em;
+}
