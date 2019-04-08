@@ -46,7 +46,7 @@ class local__germplasm_crossing_block_summary_formatter extends TripalFieldForma
   public function view(&$element, $entity_type, $entity, $langcode, $items, $display) {
     // Data to render:
     $data = $items[0]['value']['local:germplasm crossing block summary'];
-    
+
     // When no cross fround, do not render pane.
     if ($data) {
       // Add element:
@@ -56,13 +56,13 @@ class local__germplasm_crossing_block_summary_formatter extends TripalFieldForma
           <div id="field-germplasm-crossing-block-summary-wrapper">
             <div>
               <ul>
-                <li>Year<span>%s</span></li><li>Season<span>%d</span></li>
+                <li>Year<span>%d</span></li><li>Season<span>%s</span></li>
                 <li>%d Crosses</li>
               </ul>
             </div>
-          </div>', $data['season'], $data['year'], number_format($data['cross'])),
+          </div>', $data['year'], $data['season'], number_format($data['cross'])),
       );
-      
+
       // Style information.
       drupal_add_css(drupal_get_path('module', 'kp_fields') . '/includes/TripalFields/local__germplasm_crossing_block_summary/theme/style_gcbs_field.css');
     }
